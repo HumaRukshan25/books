@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Manipulation</title>
+    <style>
+        /* Define CSS styles for the list items */
+        .green {
+            color: green;
+        }
+
+        .yellow {
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="green">HELLO</li>
+        <li class="yellow">WORLD</li>
+    </ul>
+
+    <form id="myForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        // JavaScript code to manipulate the DOM
+        document.addEventListener("DOMContentLoaded", function () {
+            // Select the first <li> tag and add the 'green' class
+            const firstLi = document.querySelector("li.green");
+            firstLi.style.color = "green";
+
+            // Select the second <li> tag and add the 'yellow' class
+            const secondLi = document.querySelector("li.yellow");
+            secondLi.style.color = "yellow";
+
+            // Add event listener to the form for form submission
+            const form = document.getElementById("myForm");
+            form.addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent the form from submitting
+
+                // Get form values
+                const name = document.getElementById("name").value;
+                const email = document.getElementById("email").value;
+
+                // Log the form values
+                console.log("Name:", name);
+                console.log("Email:", email);
+            });
+        });
+    </script>
+</body>
+</html>

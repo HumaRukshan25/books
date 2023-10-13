@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Event Handling</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        #myForm {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("myForm");
+            
+            // Click Event
+            form.addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent the form from submitting
+                
+                // Get form values
+                const username = document.getElementById("username").value;
+                const email = document.getElementById("email").value;
+
+                // Perform validation (e.g., checking for a valid email format)
+                if (!isValidEmail(email)) {
+                    console.log("Invalid email format. Please enter a valid email address.");
+                    return;
+                }
+
+                // Log the form values
+                console.log("Username:", username);
+                console.log("Email:", email);
+            });
+
+            // Mouseover Event
+            form.addEventListener("mouseover", function () {
+                console.log("Mouseover event triggered.");
+            });
+
+            // Mouseout Event
+            form.addEventListener("mouseout", function () {
+                console.log("Mouseout event triggered.");
+            });
+
+            // Email validation function
+            function isValidEmail(email) {
+                // Regular expression to validate email format
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+        });
+    </script>
+</body>
+</html>

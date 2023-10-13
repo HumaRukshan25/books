@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Appointment App</title>
+    <style>
+        body {
+            background-image: url("im.jpeg");
+            background-size: cover;
+        }
+        h2, form {
+            color: blue;
+            background-color: aliceblue;
+            padding: 30px;
+            border: 4px solid red;
+            margin: 10px;
+            width: 400px;
+        }
+        form {
+            height: 200px;
+        }
+        h2 {
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Booking Appointment</h2><br><br>
+
+    <form method="post"  >
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" autocomplete="username"><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" autocomplete="email"><br><br>
+        <label for="phoneNumber">Phone number:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[789][0-9]{9}" autocomplete="tel"><br><br>
+        <input type="submit" value="Submit"> <input type="reset">
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
