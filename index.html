@@ -21,11 +21,27 @@
         h2 {
             height: 40px;
         }
+        .user-list {
+            list-style-type: none;
+            padding: 0;
+            color:aliceblue;
+        }
+        .user-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .user-info {
+            flex: 1;
+        }
+        .delete-button {
+            margin-left: 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <h2>Booking Appointment</h2><br><br>
-
     <form method="post">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" autocomplete="username"><br><br>
@@ -35,7 +51,10 @@
         <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[789][0-9]{9}" autocomplete="tel"><br><br>
         <input type="submit" value="Submit"> <input type="reset">
     </form>
-
+    <h2>Submitted Users</h2>
+    <ul class="user-list" id="user-list">
+        <!-- User items will be displayed here -->
+    </ul>
     <script src="script.js"></script>
 </body>
 </html>
