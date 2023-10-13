@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 `<span>Email: ${contact.email}</span>` +
                 `<span>Phone: ${contact.phoneNumber}</span>` +
                 `</div>` +
+                `<button class="edit-button" data-index="${index}">Edit</button>` + // Add the "Edit" button
                 `<button class="delete-button" data-index="${index}">Delete</button>`;
 
             userList.appendChild(userItem);
@@ -77,7 +78,29 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Initial display of the contact list
-    var initialContacts = JSON.parse(localStorage.getItem("formData")) || [];
-    displayContactList(initialContacts);
+    // Event delegation for edit buttons
+    document.getElementById("user-list").addEventListener("click", function (event) {
+        if (event.target.classList.contains("edit-button")) {
+            var index = event.target.getAttribute("data-index");
+            editContact(index);
+        }
+    });
+
+    // Function to edit a contact
+    function editContact(index) {
+        var existingContacts = JSON.parse(localStorage.getItem("formData")) || [];
+
+        if (index >= 0 && index < existingContacts.length) {
+            // Get the user's information based on the index
+            var userToEdit = existingContacts[index];
+
+            // Populate the form with the user's information
+            document.getElementById("username").value = userToEdit.username;
+            document.getElementById("email").value = userToEdit.email;
+            document.getElementById("phoneNumber").value = userToEdit.phoneNumber;
+
+            // Save the user's index in a hidden field for later reference
+            document.getElementById("edit-user-index").value = index;
+        }
+    }
 });
