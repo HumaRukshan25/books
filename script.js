@@ -56,15 +56,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 phoneNumber: phoneNumber
             };
 
-            var existingContacts = JSON.parse(localStorage.getItem("formData")) || [];
-            existingContacts.push(newUser);
-
-            localStorage.setItem("formData", JSON.stringify(existingContacts));
-
-            // Refresh the contact list in the UI
-            displayContactList(existingContacts);
-
-            form.reset();
+            // Send the user data to the cloud using Axios
+            sendUserToCloud(newUser);
         } else {
             alert("Please fill in all required fields.");
         }
@@ -102,5 +95,19 @@ document.addEventListener("DOMContentLoaded", function () {
             // Save the user's index in a hidden field for later reference
             document.getElementById("edit-user-index").value = index;
         }
+    }
+
+    // Function to send user data to the cloud using Axios
+    function sendUserToCloud(userData) {
+        axios.post('https://crudcrud.com/api/your-api-endpoint', userData)
+            .then(function (response) {
+                console.log('User data sent to the cloud:', response.data);
+                // Refresh the contact list in the UI
+                displayContactList([userData]); // Add the new user to the contact list
+                form.reset();
+            })
+            .catch(function (error) {
+                console.error('Error sending user data to the cloud:', error);
+            });
     }
 });
