@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function sendUserToCloud(userData) {
         axios.post('https://crudcrud.com/api/your-api-endpoint', userData)
             .then(function (response) {
-                console.log('User data sent to the cloud:', response.data);
+                console.log('User data sent to  cloud:', response.data);
                 // Refresh the contact list in the UI
                 displayContactList([userData]); // Add the new user to the contact list
                 form.reset();
